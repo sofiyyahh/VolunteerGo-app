@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+// Define the User class
+lass User {
+  final String fullName;
+  final String email;
+  final String password;
+
+  User({
+    required this.fullName,
+    required this.email,
+    required this.password,
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      fullName: json['fullName'],
+      email: json['email'],
+      password: json['password'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'fullName': fullName,
+      'email': email,
+      'password': password,
+    };
+  }
+}
+
+Future<void> addUserToFirestore(User user) async {
+  try {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .add(user.toJson()); 
+    print('User added successfully!');
+  } catch (e) {
+    print('Failed to add user: $e');
+  }
+}
+
+
+void testAddUser() {
+  final newUser = User(
+    fullName: 'Jackson Farm',
+    email: 'jackson@example.com',
+    password: 'superSecurePassword123',
+  );
+
+  addUserToFirestore(newUser);
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  testAddUser(); // this must be here!
+  runApp(MyApp());
+}
