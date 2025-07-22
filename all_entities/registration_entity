@@ -1,0 +1,27 @@
+class Registration {
+  final int RegistrationId;
+  final int UserId;
+  final int EventId;
+
+  Registration({
+    required this.RegistrationId,
+    required this.UserId,
+    required this.EventId,
+  });
+
+  factory Registration.fromJson(Map<String, dynamic> json) {
+    return Registration(
+      RegistrationId: json['RegistrationId'],
+      UserId: json['UserId'],
+      EventId: json['EventId'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'RegistrationId': RegistrationId,
+      'UserId': UserId,
+      'EventId': EventId,
+    };
+  }
+}

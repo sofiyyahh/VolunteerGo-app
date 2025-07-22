@@ -1,0 +1,32 @@
+class User {
+  final int UserId;
+  final String FullName;
+  final String Email;
+  final String Password;
+
+  User({
+    required this.UserId;
+    required this.FullName;
+    required this.Email;
+    required this.Password;
+    }
+  );
+  
+  factory User.fromJson(Map<String, dynamic> json){
+    return User(
+      UserId: json['UserId'],
+      FullName: json['FullName'],
+      Email: json['Email'],
+      Password: json['Password'],
+  );
+}
+
+Map<String, dynamic> toJson() {
+    return {
+      'UserId': UserId,
+      'FullName': Fullname,
+      'Email': Email,
+      'Password': Password,
+    };
+  }
+}
