@@ -1,0 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../all_entities/user_entity';
+import '../all_entities/event_registration_entity';
+import '../all_entities/event_entity';
+
+
+
+Future<void> joinEvent(int currentUserId, int currentEventId) async {
+  try {
+      int newId = await getNextRegistrationId();
+      final newRegistrationRecord = Registration(
+        registrationId: newId,
+        userId: currentUserId,
+        eventId: currentEventId
+      );
+    await FirebaseFirestore.instance
+    .collection('Registration')
+    .add(newRegistrationRecord.toJson());
+    
+    print('✅ Registration added successfully');
+    } catch (e) {
+      print('❌ Failed to add registration: $e');
+    }
+}
+
+
+Future<int> getNextRegistrationId() async {
+  final counterRef = FirebaseFirestore.instance.collection('Counters').doc('registrationId');
+  final snapshot = await counterRef.get();
+  int currentId = snapshot.data()?['currentId'] ?? 0;
+  int registrationId = currentId + 1;
+  await counterRef.set({'currentId': registrationId});
+  return registrationId;
+}
+
+

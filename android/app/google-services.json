@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "376634641958",
+    "project_id": "volunteergo-2b539",
+    "storage_bucket": "volunteergo-2b539.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376634641958:android:69891a086d3c12bdb920e7",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiiSnVGfBr6bSmuERjxe8TnKNgtNao_zU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376634641958:android:9f1a7ab93109b1a1b920e7",
+        "android_client_info": {
+          "package_name": "com.example.volunteergo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiiSnVGfBr6bSmuERjxe8TnKNgtNao_zU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

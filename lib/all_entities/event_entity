@@ -1,0 +1,47 @@
+class Event {
+  final int eventId;
+  final String eventName;
+  final DateTime date;
+  final String location;
+  final String? description;
+  final String? picture;
+  final int participationLimit;
+  final String timeSlot;
+
+  Event({
+    required this.eventId,
+    required this.eventName,
+    required this.date,
+    required this.location,
+    this.description,
+    this.picture,
+    required this.participationLimit,
+    required this.timeSlot,
+  });
+
+  factory Event.fromJson(Map<String, dynamic> json) {
+    return Event(
+      eventId: json['eventId'],
+      eventName: json['eventName'],
+      date: DateTime.parse(json['date']),
+      location: json['location'],
+      description: json['description'],
+      picture: json['picture'],
+      participationLimit: json['participationLimit'],
+      timeSlot: json['timeSlot'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'eventId': eventId,
+      'eventName': eventName,
+      'date': date.toIso8601String(),
+      'location': location,
+      'description': description,
+      'picture': picture,
+      'participationLimit': participationLimit,
+      'timeSlot': timeSlot,
+    };
+  }
+}
